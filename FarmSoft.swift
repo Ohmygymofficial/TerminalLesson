@@ -15,7 +15,7 @@ var numberOfDay = 0
 var barn = ["milk" : 0,"wheat" : 0,"wool" : 0]
 
 //declaration d'une variable pour rester en boucle dans le programme et ne pas sortir à la fin
-var stayinprogram = "no"
+var stayinprogram = "yes"
 
 
 /* START
@@ -81,12 +81,15 @@ func milkCows() {
 
 
 
+while stayinprogram == "yes" {
+    
+
 
         print("Que voulez vous faire ?"
             + "\n1. 🤳 Enregistrer une nouvelle activité"
             + "\n2. 💰 Consulter ma banque"
             + "\n3. 🕋 Consulter ma grange"
-            + "\n4. 🕋 Sortir du programme")
+            + "\n4. 🔚 Sortir du programme")
 
     
 
@@ -99,9 +102,9 @@ func milkCows() {
                 print("Qu'avez vous fait aujourd'hui ?"
                     + "\n1. 🤳 J'ai nourri mes animaux"
                     + "\n2. 💰 J'ai vendu mes produits"
-                    + "\n3. 🕋 J'ai trait mes vaches"
-                    + "\n4. 🕋 J'ai moissoné"
-                    + "\n5. 🕋 J'ai tondu les moutons")
+                    + "\n3. 🍼 J'ai trait mes vaches"
+                    + "\n4. 🌾 J'ai moissoné"
+                    + "\n5. ⚪️ J'ai tondu les moutons")
                 
                 if let choiceMenu2 = readLine() {
                     switch choiceMenu2 {
@@ -141,3 +144,5 @@ func milkCows() {
         }
 
 
+    
+}
