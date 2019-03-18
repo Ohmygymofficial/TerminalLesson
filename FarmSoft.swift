@@ -1,6 +1,12 @@
 print("Bienvenue sur le programme de ... LA FERME !")
 
 
+//======================
+// MARK: - Parameters
+//======================
+
+
+
 //DECLARATIONS DES CONSTANTES ET VARIABLES
 // le prix du voyage
 let price = 1499.0
@@ -18,12 +24,14 @@ var barn = ["milk" : 0,"wheat" : 0,"wool" : 0]
 var stayinprogram = "yes"
 
 
-/* START
- ESPACE FUNCTION
- ESPACE FUNCTION
- ESPACE FUNCTION
- ESPACE FUNCTION
- */
+
+
+//======================
+// MARK: - Activities
+//======================
+
+
+
 
 
 // FUNCTION TAILLE DE LA FERME
@@ -71,13 +79,9 @@ func milkCows() {
 }
 
 
-
-/* END
- ESPACE FUNCTION
- ESPACE FUNCTION
- ESPACE FUNCTION
- ESPACE FUNCTION
- */
+//======================
+// MARK: - Conversation
+//======================
 
 
 
@@ -121,7 +125,7 @@ while stayinprogram == "yes" {
                     default:
                         print("Je n'ai pas compris")
                     }
-                    
+                    print("Yes, bien bossé ! Bon courage pour le reste de la journée!")
                 }
                 
                 
