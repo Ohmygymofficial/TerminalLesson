@@ -36,25 +36,13 @@ var qte = "Ok"
 // FUNCTION POUR LE LAIT : ELLE FONCTIONNE MAIS JE VAIS DEVOIR LA TAPER POUR TOUT : LE BLE, LE LAIT, LE LAINE ETC ETC
 // DOnc trouver une solution pour que ce soit commun
 // LE CODE CI DESSOUS FONCTIONNE MAIS UNIQUEMENT POUR LE LAIT
-/*
- func pourLeLait()  {
- print("Combien de lait as tu extrait des rustines ? ")//Demander à Joe de saisir sa quantité pour les vaches
- if let qteLait = readLine() {  // Pour cela on est obligé d'utiliser readLine()
-     if let qteLait2 = Int(qteLait) { //Verifier qu'il a bien saisie une quantité en entier
-         print("Tu as pris : \(qteLait2) ")
-         barn["milk"]! += qteLait2
-     } else {
-         print("Tu as saisi du texte")
-     }
- }
- }
-*/
+
 
 
 func pourTous(de type : String) -> Int? {
     print("Saisir la quantité de \(type) extrait aujourd'hui : ")//Demander à Joe de saisir sa quantité pour les vaches
     if let qteTous = readLine() {  // Pour cela on est obligé d'utiliser readLine()
-        if let qteTous2 = Int(qteTous) { //Verifier qu'il a bien saisie une quantité en entier
+        if let qteTous2 = Int(qteTous) {  //Verifier qu'il a bien saisie une quantité en entier
             print("Tu as pris : \(qteTous2) ")
             return qteTous2
         }
