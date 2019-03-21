@@ -23,6 +23,7 @@ var barn = ["milk" : 0,"wheat" : 0,"wool" : 0]
 //declaration d'une variable pour rester en boucle dans le programme et ne pas sortir à la fin
 var stayinprogram = "yes"
 
+var qte = "Ok"
 
 
 
@@ -30,6 +31,21 @@ var stayinprogram = "yes"
 // MARK: - Activities
 //======================
 
+
+
+// FUNCTION POUR LE LAIT : ELLE FONCTIONNE MAIS JE VAIS DEVOIR LA TAPER POUR TOUT : LE BLE, LE LAIT, LE LAINE ETC ETC
+// DOnc trouver une solution pour que ce soit commun
+func pourLeLait()  {
+print("Combien de lait as tu extrait des rustines ? ")//Demander à Joe de saisir sa quantité pour les vaches
+if let qteLait = readLine() {  // Pour cela on est obligé d'utiliser readLine()
+    if let qteLait2 = Int(qteLait) { //Verifier qu'il a bien saisie une quantité en entier
+        print("Tu as pris : \(qteLait2) ")
+        barn["milk"]! += qteLait2
+    } else {
+        print("Tu as saisi du texte")
+    }
+}
+}
 
 
 
@@ -61,11 +77,15 @@ func sell() {
 }
 
 
+
+
 // FUNCTION   harvest Joe moissone le blé et fais 100 pieces une fois par mois
 func harvest() {
-    barn["wheat"]! += 100
+        barn["wheat"]! += 100
 }
 
+
+//barn["wheat"]! += qteble
 
 // FUNCTION   mowSheep Joe tond les moutons et fais 30 pieces 2 fois dans le mois
 func mowSheep() {
@@ -75,7 +95,7 @@ func mowSheep() {
 
 // FUNCTION   milkCows Joe traie les vaches
 func milkCows() {
-    barn["milk"]! += 30
+    barn["milk"]! += 0
 }
 
 
@@ -117,7 +137,8 @@ while stayinprogram == "yes" {
                     case "2": // vendu les produits
                         sell()
                     case "3": // traire les vaches
-                        milkCows()
+                        pourLeLait()
+                        // milkCows()
                     case "4": //moisson
                         harvest()
                     case "5": //moutons
