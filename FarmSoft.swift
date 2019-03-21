@@ -96,16 +96,17 @@ func sell() {
 
 
 // FUNCTION   harvest Joe moissone le blé et fais 100 pieces une fois par mois
-func harvest() {
-        barn["wheat"]! += 100
+func harvest(qty qteTous2: Int) {
+        barn["wheat"]! += qteTous2
 }
 
 
 //barn["wheat"]! += qteble
 
 // FUNCTION   mowSheep Joe tond les moutons et fais 30 pieces 2 fois dans le mois
-func mowSheep() {
-    barn["wool"]! += 30
+func mowSheep(qty qteTous2: Int) {
+    barn["wool"]! += qteTous2
+    
 }
 
 
@@ -169,9 +170,13 @@ func milkCows(qty qteTous2: Int) {
                             milkCows(qty: qteTous2)
                         }
                     case "4": //moisson
-                        harvest()
+                        if let qteTous2 = pourTous(de: "Blé") {
+                            harvest(qty: qteTous2)
+                        }
                     case "5": //moutons
-                        mowSheep()
+                        if let qteTous2 = pourTous(de: "Blé") {
+                            mowSheep(qty: qteTous2)
+                        }
                     default:
                         print("Je n'ai pas compris")
                     }
