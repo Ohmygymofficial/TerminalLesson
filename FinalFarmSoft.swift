@@ -16,8 +16,9 @@ var money = 0.0
 // dictionary of different type of products
 var barn = ["milk" : 0,"wheat" : 0,"wool" : 0]
 
-// var declaraction to stay or leave the program
-var stayinprogram = true
+
+// var declaration to stay or leave the program
+var stayInProgram = true
 
 
 //======================
@@ -27,12 +28,15 @@ var stayinprogram = true
 
 
 // function for asking Quantity to the user
-func pourTous(de type : String) -> Int? {
+func fQuantity(de type : String) -> Int? {
     print("Saisir la quantité de \(type) extrait aujourd'hui : ")
-    if let qteTous = readLine() {
-        if let qteTous2 = Int(qteTous) {
-            print("Tu as pris : \(qteTous2) ")
-            return qteTous2
+    if let checkQty = readLine() {
+        if let quantityInt = Int(checkQty) {
+            print("Tu as pris : \(quantityInt) ")
+            return quantityInt
+        } else {
+            print("Ce n'est pas un chiffre")
+           return nil
         }
     }
     print("Erreur de saisie")
@@ -71,9 +75,11 @@ func sell() {
 
 
 
-// FUNCTION   harvest  only for Wheat
+/* BEFORE OPTIMISATION
+
+ FUNCTION   harvest  only for Wheat
 func harvest(qty qteTous2: Int) {
-    barn["wheat"]! += qteTous2
+    barn["wheat"]! += quantityInt
 }
 
 
@@ -87,6 +93,14 @@ func mowSheep(qty qteTous2: Int) {
 // FUNCTION   milkCows only for Milk
 func milkCows(qty qteTous2: Int) {
     barn["milk"]! += qteTous2
+}
+*/
+
+
+// AFTER OPTIMISATION
+// FUNCTION GENERIC
+func genericAdd(qty quantityInt: Int, of activity: String) {
+    barn[activity]! += quantityInt
 }
 
 
@@ -126,22 +140,25 @@ func principalMenu() {
                 case "2": // sell products
                     sell()
                 case "3": // milk the cows
-                    if let qteTous2 = pourTous(de: "Lait") {
-                        milkCows(qty: qteTous2)
+                    if let quantityInt = fQuantity(de: "Lait") {
+                        let activity = "milk"
+                        genericAdd(qty: quantityInt, of: activity)
                     }
                 case "4": //  harvest
-                    if let qteTous2 = pourTous(de: "Blé") {
-                        harvest(qty: qteTous2)
+                    if let quantityInt = fQuantity(de: "Blé") {
+                        let activity = "wheat"
+                        genericAdd(qty: quantityInt, of: activity)
                     }
                 case "5": // Shear  Sheep
-                    if let qteTous2 = pourTous(de: "Moutons") {
-                        mowSheep(qty: qteTous2)
+                    if let quantityInt = fQuantity(de: "Moutons") {
+                        let activity = "wool"
+                        genericAdd(qty: quantityInt, of: activity)
                     }
                 default:
                     print("Je n'ai pas compris")
                 }
                 // confirmation message
-                print("Yes, bien bossé ! Bon courage pour le reste de la journée!")
+                    print("Yes, bien bossé ! Bon courage pour le reste de la journée!")
             }
             
             
@@ -149,15 +166,18 @@ func principalMenu() {
         case "2":
             print("Votre banque contient \(money) euros !")
             
+            
             // Barn stock
         case "3":
+            
             print("Votre grange contient :"
-                + "\n🍼  \(barn["milk"]!) bidons de lait"
+                + "\n🍼  \(barn["Milk"] ?? 10) bidons de lait"
                 + "\n🌾  \(barn["wheat"]!) bottes de blé"
                 + "\n⚪️  \(barn["wool"]!) pelottes de laine")
+            
         case "4":
             // to leave program
-            stayinprogram = false
+            stayInProgram = false
         default:
             print("Je n'ai pas compris")
         }
@@ -167,7 +187,8 @@ func principalMenu() {
 
 // Loop program
 
-while stayinprogram == true {
+while stayInProgram == true {
     principalMenu()
     
 }
+
