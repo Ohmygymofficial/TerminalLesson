@@ -7,7 +7,7 @@ print("Bienvenue sur le programme de ... LA FERME !")
 
 
 
-//DECLARATIONS let and Var
+//DECLARATION let and Var
 
 // Joe Money
 var money = 0.0
@@ -65,9 +65,11 @@ func feedCows() {
 
 // FUNCTION   JOE sell all the products that are in Barn
 func sell() {
-    money += Double(barn["milk"]!) * 0.50
-    money += Double(barn["wheat"]!) * 0.30
-    money += Double(barn["wool"]!) * 1
+    // LILIAN : EXERCICE to replace ! by another method nil colascing or if let
+    // I use colascing but it seem impossible that barn contain another thing than 0 or real number
+    money += Double(barn["milk"] ?? 0 ) * 0.50
+    money += Double(barn["wheat"] ?? 0 ) * 0.30
+    money += Double(barn["wool"] ?? 0 ) * 1
     // Reset the Barn to Zero
     barn = ["milk" : 0,"wheat" : 0,"wool" : 0]
 }
@@ -169,11 +171,24 @@ func principalMenu() {
             
             // Barn stock
         case "3":
-            
+              // LILIAN : EXERCICE to replace ! by another method nil colascing or if let
+            if barn["milk"] == nil {
+                print("Probleme dans la grange, contactez votre administrateur immédiatement")
+                barn["milk"] = 0
+            }
+            if barn["wheat"] == nil {
+                print("Probleme dans la grange, contactez votre administrateur immédiatement")
+                barn["wheat"] = 0
+            }
+            if barn["wool"] == nil {
+                print("Probleme dans la grange, contactez votre administrateur immédiatement")
+                barn["wool"] = 0
+            }
             print("Votre grange contient :"
-                + "\n🍼  \(barn["Milk"] ?? 10) bidons de lait"
-                + "\n🌾  \(barn["wheat"]!) bottes de blé"
-                + "\n⚪️  \(barn["wool"]!) pelottes de laine")
+            
+                + "\n🍼  \(barn["milk"] ?? 0) bidons de lait"
+                + "\n🌾  \(barn["wheat"] ?? 0) bottes de blé"
+                + "\n⚪️  \(barn["wool"] ?? 0) pelottes de laine")
             
         case "4":
             // to leave program
